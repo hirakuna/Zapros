@@ -1,0 +1,14 @@
+<h1>Отчет по категориям заявок за определенный период</h1>
+<%= link_to 'Главная страница', controller: 'home_page' %>
+<%= link_to 'Назад', controller: 'otchet3' %>
+<br><br>
+
+	<table border="1">
+	<th>Прибыль за период</th>
+	<%= Vipol.find_by_sql(["SELECT    Sum(cena) AS cena FROM vipols WHERE date_part('year', vipols.sozd) >= ? and date_part('month', vipols.sozd) >= ? and date_part('day', vipols.sozd) >= ? and date_part('year', vipols.vipoln) <= ? and date_part('month', vipols.vipoln) <= ? and date_part('day', vipols.vipoln) <= ? vipol.soz between ",@year_s, @month_s, @day_s, @year_f, @month_f, @day_f]).each do |vipol|%>
+    <tr>
+
+		<td><%= vipol.cena %></td>
+
+    </tr>
+<% end %>

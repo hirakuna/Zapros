@@ -1,0 +1,12 @@
+<h1>Отчет по категориям заявок за определенный период</h1>
+<%= link_to 'Главная страница', controller: 'home_page' %>
+<br><br>
+<%= form_tag("search", method: "get") do %>
+<%= label_tag(:start, "Введите начальную дату:") %>
+<%= date_select(:start, "written_on") %>
+<br><br>
+<%= label_tag(:finish, "Введите конечную дату:") %>
+<%= date_select(:finish, "written_on") %>
+<br><br>
+     <%= submit_tag ("Искать") %>
+     <% end %>
